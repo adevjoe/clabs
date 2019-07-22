@@ -5,6 +5,9 @@
  */
 #include <stdio.h>
 
+float convertFahrenheitToCelsius(float fahr);
+float convertCelsiusToFahrenheit(float celsius);
+
 void printFahrenheitToCelsius()
 {
     printf("printFahrenheitToCelsius\n");
@@ -44,7 +47,7 @@ void printCelsiusToFahrenheit()
     float step = 10;
     while (celsius <= upper)
     {
-        printf("%6.0f\t%10.0f\n", celsius, celsius * 9.0 / 5.0 + 32);
+        printf("%6.0f\t%10.0f\n", celsius, convertCelsiusToFahrenheit(celsius));
         celsius += step;
     }
 }
@@ -55,8 +58,18 @@ void printFahrenheitToCelsiusReverse()
     printf("Fahrenheit\tCelsius\n");
     for (float fahr = 300; fahr >= 0; fahr -= 20)
     {
-        printf("%-10.0f\t%-6.2f\n", fahr, (5.0 / 9.0) * (fahr - 32));
+        printf("%-10.0f\t%-6.2f\n", fahr, convertFahrenheitToCelsius(fahr));
     }
+}
+
+float convertFahrenheitToCelsius(float fahr)
+{
+    return (5.0 / 9.0) * (fahr - 32);
+}
+
+float convertCelsiusToFahrenheit(float celsius)
+{
+    return celsius * 9.0 / 5.0 + 32;
 }
 
 int main()
